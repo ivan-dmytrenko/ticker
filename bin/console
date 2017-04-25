@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__.'/../vendor/autoload.php';
+
+use BtcTicker\Command\RunCommand;
+
+set_time_limit(0);
+
+/** @var Silex\Application $app */
+$app = require_once  __DIR__.'/../app/app.php';
+
+require_once __DIR__.'/../config/dev.php';
+
+
+/** @var Knp\Console\Application $application */
+$application = $app['console'];
+$application->add(new RunCommand());
+$application->run();
